@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="en-US" >
+<head>
+	
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="format-detection" content="telephone=no">
+<title>Digital Forensics Association</title>
+<script type="text/javascript">var ajaxurl = "https://studentspl.us/wp-admin/admin-ajax.php"</script>
+		<style id="critical-path-css" type="text/css">
+			/* non cached */ body,html{width:100%;height:100%;margin:0;padding:0}.page-preloader{top:0;left:0;z-index:999;position:fixed;height:100%;width:100%;text-align:center}.preloader-preview-area{-webkit-animation-delay:-.2s;animation-delay:-.2s;top:50%;-webkit-transform:translateY(100%);-ms-transform:translateY(100%);transform:translateY(100%);margin-top:10px;max-height:calc(50% - 20px);opacity:1;width:100%;text-align:center;position:absolute}.preloader-logo{max-width:90%;top:50%;-webkit-transform:translateY(-100%);-ms-transform:translateY(-100%);transform:translateY(-100%);margin:-10px auto 0 auto;max-height:calc(50% - 20px);opacity:1;position:relative}.ball-pulse>div{width:15px;height:15px;border-radius:100%;margin:2px;-webkit-animation-fill-mode:both;animation-fill-mode:both;display:inline-block;-webkit-animation:ball-pulse .75s infinite cubic-bezier(.2,.68,.18,1.08);animation:ball-pulse .75s infinite cubic-bezier(.2,.68,.18,1.08)}.ball-pulse>div:nth-child(1){-webkit-animation-delay:-.36s;animation-delay:-.36s}.ball-pulse>div:nth-child(2){-webkit-animation-delay:-.24s;animation-delay:-.24s}.ball-pulse>div:nth-child(3){-webkit-animation-delay:-.12s;animation-delay:-.12s}@-webkit-keyframes ball-pulse{0%{-webkit-transform:scale(1);transform:scale(1);opacity:1}45%{-webkit-transform:scale(.1);transform:scale(.1);opacity:.7}80%{-webkit-transform:scale(1);transform:scale(1);opacity:1}}@keyframes ball-pulse{0%{-webkit-transform:scale(1);transform:scale(1);opacity:1}45%{-webkit-transform:scale(.1);transform:scale(.1);opacity:.7}80%{-webkit-transform:scale(1);transform:scale(1);opacity:1}}.ball-clip-rotate-pulse{position:relative;-webkit-transform:translateY(-15px) translateX(-10px);-ms-transform:translateY(-15px) translateX(-10px);transform:translateY(-15px) translateX(-10px);display:inline-block}.ball-clip-rotate-pulse>div{-webkit-animation-fill-mode:both;animation-fill-mode:both;position:absolute;top:0;left:0;border-radius:100%}.ball-clip-rotate-pulse>div:first-child{height:36px;width:36px;top:7px;left:-7px;-webkit-animation:ball-clip-rotate-pulse-scale 1s 0s cubic-bezier(.09,.57,.49,.9) infinite;animation:ball-clip-rotate-pulse-scale 1s 0s cubic-bezier(.09,.57,.49,.9) infinite}.ball-clip-rotate-pulse>div:last-child{position:absolute;width:50px;height:50px;left:-16px;top:-2px;background:0 0;border:2px solid;-webkit-animation:ball-clip-rotate-pulse-rotate 1s 0s cubic-bezier(.09,.57,.49,.9) infinite;animation:ball-clip-rotate-pulse-rotate 1s 0s cubic-bezier(.09,.57,.49,.9) infinite;-webkit-animation-duration:1s;animation-duration:1s}@-webkit-keyframes ball-clip-rotate-pulse-rotate{0%{-webkit-transform:rotate(0) scale(1);transform:rotate(0) scale(1)}50%{-webkit-transform:rotate(180deg) scale(.6);transform:rotate(180deg) scale(.6)}100%{-webkit-transform:rotate(360deg) scale(1);transform:rotate(360deg) scale(1)}}@keyframes ball-clip-rotate-pulse-rotate{0%{-webkit-transform:rotate(0) scale(1);transform:rotate(0) scale(1)}50%{-webkit-transform:rotate(180deg) scale(.6);transform:rotate(180deg) scale(.6)}100%{-webkit-transform:rotate(360deg) scale(1);transform:rotate(360deg) scale(1)}}@-webkit-keyframes ball-clip-rotate-pulse-scale{30%{-webkit-transform:scale(.3);transform:scale(.3)}100%{-webkit-transform:scale(1);transform:scale(1)}}@keyframes ball-clip-rotate-pulse-scale{30%{-webkit-transform:scale(.3);transform:scale(.3)}100%{-webkit-transform:scale(1);transform:scale(1)}}@-webkit-keyframes square-spin{25%{-webkit-transform:perspective(100px) rotateX(180deg) rotateY(0);transform:perspective(100px) rotateX(180deg) rotateY(0)}50%{-webkit-transform:perspective(100px) rotateX(180deg) rotateY(180deg);transform:perspective(100px) rotateX(180deg) rotateY(180deg)}75%{-webkit-transform:perspective(100px) rotateX(0) rotateY(180deg);transform:perspective(100px) rotateX(0) rotateY(180deg)}100%{-webkit-transform:perspective(100px) rotateX(0) rotateY(0);transform:perspective(100px) rotateX(0) rotateY(0)}}@keyframes square-spin{25%{-webkit-transform:perspective(100px) rotateX(180deg) rotateY(0);transform:perspective(100px) rotateX(180deg) rotateY(0)}50%{-webkit-transform:perspective(100px) rotateX(180deg) rotateY(180deg);transform:perspective(100px) rotateX(180deg) rotateY(180deg)}75%{-webkit-transform:perspective(100px) rotateX(0) rotateY(180deg);transform:perspective(100px) rotateX(0) rotateY(180deg)}100%{-webkit-transform:perspective(100px) rotateX(0) rotateY(0);transform:perspective(100px) rotateX(0) rotateY(0)}}.square-spin{display:inline-block}.square-spin>div{-webkit-animation-fill-mode:both;animation-fill-mode:both;width:50px;height:50px;-webkit-animation:square-spin 3s 0s cubic-bezier(.09,.57,.49,.9) infinite;animation:square-spin 3s 0s cubic-bezier(.09,.57,.49,.9) infinite}.cube-transition{position:relative;-webkit-transform:translate(-25px,-25px);-ms-transform:translate(-25px,-25px);transform:translate(-25px,-25px);display:inline-block}.cube-transition>div{-webkit-animation-fill-mode:both;animation-fill-mode:both;width:15px;height:15px;position:absolute;top:-5px;left:-5px;-webkit-animation:cube-transition 1.6s 0s infinite ease-in-out;animation:cube-transition 1.6s 0s infinite ease-in-out}.cube-transition>div:last-child{-webkit-animation-delay:-.8s;animation-delay:-.8s}@-webkit-keyframes cube-transition{25%{-webkit-transform:translateX(50px) scale(.5) rotate(-90deg);transform:translateX(50px) scale(.5) rotate(-90deg)}50%{-webkit-transform:translate(50px,50px) rotate(-180deg);transform:translate(50px,50px) rotate(-180deg)}75%{-webkit-transform:translateY(50px) scale(.5) rotate(-270deg);transform:translateY(50px) scale(.5) rotate(-270deg)}100%{-webkit-transform:rotate(-360deg);transform:rotate(-360deg)}}@keyframes cube-transition{25%{-webkit-transform:translateX(50px) scale(.5) rotate(-90deg);transform:translateX(50px) scale(.5) rotate(-90deg)}50%{-webkit-transform:translate(50px,50px) rotate(-180deg);transform:translate(50px,50px) rotate(-180deg)}75%{-webkit-transform:translateY(50px) scale(.5) rotate(-270deg);transform:translateY(50px) scale(.5) rotate(-270deg)}100%{-webkit-transform:rotate(-360deg);transform:rotate(-360deg)}}.ball-scale>div{border-radius:100%;margin:2px;-webkit-animation-fill-mode:both;animation-fill-mode:both;display:inline-block;height:60px;width:60px;-webkit-animation:ball-scale 1s 0s ease-in-out infinite;animation:ball-scale 1s 0s ease-in-out infinite}@-webkit-keyframes ball-scale{0%{-webkit-transform:scale(0);transform:scale(0)}100%{-webkit-transform:scale(1);transform:scale(1);opacity:0}}@keyframes ball-scale{0%{-webkit-transform:scale(0);transform:scale(0)}100%{-webkit-transform:scale(1);transform:scale(1);opacity:0}}.line-scale>div{-webkit-animation-fill-mode:both;animation-fill-mode:both;display:inline-block;width:5px;height:50px;border-radius:2px;margin:2px}.line-scale>div:nth-child(1){-webkit-animation:line-scale 1s -.5s infinite cubic-bezier(.2,.68,.18,1.08);animation:line-scale 1s -.5s infinite cubic-bezier(.2,.68,.18,1.08)}.line-scale>div:nth-child(2){-webkit-animation:line-scale 1s -.4s infinite cubic-bezier(.2,.68,.18,1.08);animation:line-scale 1s -.4s infinite cubic-bezier(.2,.68,.18,1.08)}.line-scale>div:nth-child(3){-webkit-animation:line-scale 1s -.3s infinite cubic-bezier(.2,.68,.18,1.08);animation:line-scale 1s -.3s infinite cubic-bezier(.2,.68,.18,1.08)}.line-scale>div:nth-child(4){-webkit-animation:line-scale 1s -.2s infinite cubic-bezier(.2,.68,.18,1.08);animation:line-scale 1s -.2s infinite cubic-bezier(.2,.68,.18,1.08)}.line-scale>div:nth-child(5){-webkit-animation:line-scale 1s -.1s infinite cubic-bezier(.2,.68,.18,1.08);animation:line-scale 1s -.1s infinite cubic-bezier(.2,.68,.18,1.08)}@-webkit-keyframes line-scale{0%{-webkit-transform:scaley(1);transform:scaley(1)}50%{-webkit-transform:scaley(.4);transform:scaley(.4)}100%{-webkit-transform:scaley(1);transform:scaley(1)}}@keyframes line-scale{0%{-webkit-transform:scaley(1);transform:scaley(1)}50%{-webkit-transform:scaley(.4);transform:scaley(.4)}100%{-webkit-transform:scaley(1);transform:scaley(1)}}.ball-scale-multiple{position:relative;-webkit-transform:translateY(30px);-ms-transform:translateY(30px);transform:translateY(30px);display:inline-block}.ball-scale-multiple>div{border-radius:100%;-webkit-animation-fill-mode:both;animation-fill-mode:both;margin:2px;position:absolute;left:-30px;top:0;opacity:0;margin:0;width:50px;height:50px;-webkit-animation:ball-scale-multiple 1s 0s linear infinite;animation:ball-scale-multiple 1s 0s linear infinite}.ball-scale-multiple>div:nth-child(2){-webkit-animation-delay:-.2s;animation-delay:-.2s}.ball-scale-multiple>div:nth-child(3){-webkit-animation-delay:-.2s;animation-delay:-.2s}@-webkit-keyframes ball-scale-multiple{0%{-webkit-transform:scale(0);transform:scale(0);opacity:0}5%{opacity:1}100%{-webkit-transform:scale(1);transform:scale(1);opacity:0}}@keyframes ball-scale-multiple{0%{-webkit-transform:scale(0);transform:scale(0);opacity:0}5%{opacity:1}100%{-webkit-transform:scale(1);transform:scale(1);opacity:0}}.ball-pulse-sync{display:inline-block}.ball-pulse-sync>div{width:15px;height:15px;border-radius:100%;margin:2px;-webkit-animation-fill-mode:both;animation-fill-mode:both;display:inline-block}.ball-pulse-sync>div:nth-child(1){-webkit-animation:ball-pulse-sync .6s -.21s infinite ease-in-out;animation:ball-pulse-sync .6s -.21s infinite ease-in-out}.ball-pulse-sync>div:nth-child(2){-webkit-animation:ball-pulse-sync .6s -.14s infinite ease-in-out;animation:ball-pulse-sync .6s -.14s infinite ease-in-out}.ball-pulse-sync>div:nth-child(3){-webkit-animation:ball-pulse-sync .6s -70ms infinite ease-in-out;animation:ball-pulse-sync .6s -70ms infinite ease-in-out}@-webkit-keyframes ball-pulse-sync{33%{-webkit-transform:translateY(10px);transform:translateY(10px)}66%{-webkit-transform:translateY(-10px);transform:translateY(-10px)}100%{-webkit-transform:translateY(0);transform:translateY(0)}}@keyframes ball-pulse-sync{33%{-webkit-transform:translateY(10px);transform:translateY(10px)}66%{-webkit-transform:translateY(-10px);transform:translateY(-10px)}100%{-webkit-transform:translateY(0);transform:translateY(0)}}.transparent-circle{display:inline-block;border-top:.5em solid rgba(255,255,255,.2);border-right:.5em solid rgba(255,255,255,.2);border-bottom:.5em solid rgba(255,255,255,.2);border-left:.5em solid #fff;-webkit-transform:translateZ(0);transform:translateZ(0);-webkit-animation:transparent-circle 1.1s infinite linear;animation:transparent-circle 1.1s infinite linear;width:50px;height:50px;border-radius:50%}.transparent-circle:after{border-radius:50%;width:10em;height:10em}@-webkit-keyframes transparent-circle{0%{-webkit-transform:rotate(0);transform:rotate(0)}100%{-webkit-transform:rotate(360deg);transform:rotate(360deg)}}@keyframes transparent-circle{0%{-webkit-transform:rotate(0);transform:rotate(0)}100%{-webkit-transform:rotate(360deg);transform:rotate(360deg)}}.ball-spin-fade-loader{position:relative;top:-10px;left:-10px;display:inline-block}.ball-spin-fade-loader>div{width:15px;height:15px;border-radius:100%;margin:2px;-webkit-animation-fill-mode:both;animation-fill-mode:both;position:absolute;-webkit-animation:ball-spin-fade-loader 1s infinite linear;animation:ball-spin-fade-loader 1s infinite linear}.ball-spin-fade-loader>div:nth-child(1){top:25px;left:0;animation-delay:-.84s;-webkit-animation-delay:-.84s}.ball-spin-fade-loader>div:nth-child(2){top:17.05px;left:17.05px;animation-delay:-.72s;-webkit-animation-delay:-.72s}.ball-spin-fade-loader>div:nth-child(3){top:0;left:25px;animation-delay:-.6s;-webkit-animation-delay:-.6s}.ball-spin-fade-loader>div:nth-child(4){top:-17.05px;left:17.05px;animation-delay:-.48s;-webkit-animation-delay:-.48s}.ball-spin-fade-loader>div:nth-child(5){top:-25px;left:0;animation-delay:-.36s;-webkit-animation-delay:-.36s}.ball-spin-fade-loader>div:nth-child(6){top:-17.05px;left:-17.05px;animation-delay:-.24s;-webkit-animation-delay:-.24s}.ball-spin-fade-loader>div:nth-child(7){top:0;left:-25px;animation-delay:-.12s;-webkit-animation-delay:-.12s}.ball-spin-fade-loader>div:nth-child(8){top:17.05px;left:-17.05px;animation-delay:0s;-webkit-animation-delay:0s}@-webkit-keyframes ball-spin-fade-loader{50%{opacity:.3;-webkit-transform:scale(.4);transform:scale(.4)}100%{opacity:1;-webkit-transform:scale(1);transform:scale(1)}}@keyframes ball-spin-fade-loader{50%{opacity:.3;-webkit-transform:scale(.4);transform:scale(.4)}100%{opacity:1;-webkit-transform:scale(1);transform:scale(1)}}		</style>
+
+		<link rel='dns-prefetch' href='//fonts.googleapis.com' />
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="Digital Forensics Association &raquo; Feed" href="https://studentspl.us/?feed=rss2" />
+<link rel="alternate" type="application/rss+xml" title="Digital Forensics Association &raquo; Comments Feed" href="https://studentspl.us/?feed=comments-rss2" />
+
+<link rel="shortcut icon" href="https://studentspl.us/wp-content/uploads/2018/03/untitled-13x-3.png"  />
+<script type="text/javascript">
+window.abb = {};
+php = {};
+window.PHP = {};
+PHP.ajax = "https://studentspl.us/wp-admin/admin-ajax.php";PHP.wp_p_id = "5";var mk_header_parallax, mk_banner_parallax, mk_page_parallax, mk_footer_parallax, mk_body_parallax;
+var mk_images_dir = "http://studentspl.us/wp-content/themes/jupiter/assets/images",
+mk_theme_js_path = "http://studentspl.us/wp-content/themes/jupiter/assets/js",
+mk_theme_dir = "http://studentspl.us/wp-content/themes/jupiter",
+mk_captcha_placeholder = "Enter Captcha",
+mk_captcha_invalid_txt = "Invalid. Try again.",
+mk_captcha_correct_txt = "Captcha correct.",
+mk_responsive_nav_width = 1140,
+mk_vertical_header_back = "Back",
+mk_vertical_header_anim = "1",
+mk_check_rtl = true,
+mk_grid_width = 1140,
+mk_ajax_search_option = "disable",
+mk_preloader_bg_color = "#fff",
+mk_accent_color = "#4f48c0",
+mk_go_to_top =  "true",
+mk_smooth_scroll =  "true",
+mk_preloader_bar_color = "#4f48c0",
+mk_preloader_logo = "";
+var mk_header_parallax = false,
+mk_banner_parallax = false,
+mk_footer_parallax = false,
+mk_body_parallax = false,
+mk_no_more_posts = "No More Posts",
+mk_typekit_id   = "",
+mk_google_fonts = ["Poppins:100italic,200italic,300italic,400italic,500italic,600italic,700italic,800italic,900italic,100,200,300,400,500,600,700,800,900"],
+mk_global_lazyload = true;
+</script>
+<link rel='stylesheet' id='layerslider-css'  href='http://studentspl.us/wp-content/plugins/LayerSlider/static/layerslider/css/layerslider.css?ver=6.1.0' type='text/css' media='all' />
+<link rel='stylesheet' id='ls-google-fonts-css'  href='http://fonts.googleapis.com/css?family=Lato:100,300,regular,700,900%7COpen+Sans:300%7CIndie+Flower:regular%7COswald:300,regular,700&#038;subset=latin%2Clatin-ext' type='text/css' media='all' />
+<link rel='stylesheet' id='contact-form-7-css'  href='http://studentspl.us/wp-content/plugins/contact-form-7/includes/css/styles.css?ver=4.8' type='text/css' media='all' />
+<link rel='stylesheet' id='theme-styles-css'  href='http://studentspl.us/wp-content/themes/jupiter/assets/stylesheet/min/full-styles.6.1.1.css?ver=1517392437' type='text/css' media='all' />
+<style id='theme-styles-inline-css' type='text/css'>
+body { background-color:#fff; } .hb-custom-header #mk-page-introduce, .mk-header { background-color:#f7f7f7; } .hb-custom-header > div, .mk-header-bg { background-color:#fff; } .mk-classic-nav-bg { background-color:#fff; } .master-holder-bg { background-color:#fff; } #mk-footer { background-color:#4f48c0;background-repeat:no-repeat;background-size:cover;-webkit-background-size:cover;-moz-background-size:cover; } #mk-boxed-layout { -webkit-box-shadow:0 0 0px rgba(0, 0, 0, 0); -moz-box-shadow:0 0 0px rgba(0, 0, 0, 0); box-shadow:0 0 0px rgba(0, 0, 0, 0); } .mk-news-tab .mk-tabs-tabs .is-active a, .mk-fancy-title.pattern-style span, .mk-fancy-title.pattern-style.color-gradient span:after, .page-bg-color { background-color:#fff; } .page-title { font-size:20px; color:; text-transform:uppercase; font-weight:400; letter-spacing:2px; } .page-subtitle { font-size:14px; line-height:100%; color:; font-size:14px; text-transform:none; } body { font-family:Arial, Helvetica, sans-serif } body, p, .main-navigation-ul, .mk-vm-menuwrapper, #mk-footer-navigation ul li a, .mk-footer-copyright, .mk-fancy-title { font-family:Poppins } @font-face { font-family:'star'; src:url('http://studentspl.us/wp-content/themes/jupiter/assets/stylesheet/fonts/star/font.eot'); src:url('http://studentspl.us/wp-content/themes/jupiter/assets/stylesheet/fonts/star/font.eot?#iefix') format('embedded-opentype'), url('http://studentspl.us/wp-content/themes/jupiter/assets/stylesheet/fonts/star/font.woff') format('woff'), url('http://studentspl.us/wp-content/themes/jupiter/assets/stylesheet/fonts/star/font.ttf') format('truetype'), url('http://studentspl.us/wp-content/themes/jupiter/assets/stylesheet/fonts/star/font.svg#star') format('svg'); font-weight:normal; font-style:normal; } @font-face { font-family:'WooCommerce'; src:url('http://studentspl.us/wp-content/themes/jupiter/assets/stylesheet/fonts/woocommerce/font.eot'); src:url('http://studentspl.us/wp-content/themes/jupiter/assets/stylesheet/fonts/woocommerce/font.eot?#iefix') format('embedded-opentype'), url('http://studentspl.us/wp-content/themes/jupiter/assets/stylesheet/fonts/woocommerce/font.woff') format('woff'), url('http://studentspl.us/wp-content/themes/jupiter/assets/stylesheet/fonts/woocommerce/font.ttf') format('truetype'), url('http://studentspl.us/wp-content/themes/jupiter/assets/stylesheet/fonts/woocommerce/font.svg#WooCommerce') format('svg'); font-weight:normal; font-style:normal; }.mk-header-nav-container.one-row-style.menu-hover-style-2 { margin-top:15px; } .mk-main-navigation { display:inline-block; text-align:center; margin:0 auto; margin-left:170px; }
+</style>
+<link rel='stylesheet' id='mkhb-render-css'  href='http://studentspl.us/wp-content/themes/jupiter/header-builder/includes/assets/css/mkhb-render.css?ver=6.1.1' type='text/css' media='all' />
+<link rel='stylesheet' id='mkhb-row-css'  href='http://studentspl.us/wp-content/themes/jupiter/header-builder/includes/assets/css/mkhb-row.css?ver=6.1.1' type='text/css' media='all' />
+<link rel='stylesheet' id='mkhb-column-css'  href='http://studentspl.us/wp-content/themes/jupiter/header-builder/includes/assets/css/mkhb-column.css?ver=6.1.1' type='text/css' media='all' />
+<link rel='stylesheet' id='simcal-qtip-css'  href='http://studentspl.us/wp-content/plugins/google-calendar-events/assets/css/vendor/jquery.qtip.min.css?ver=3.1.9' type='text/css' media='all' />
+<link rel='stylesheet' id='simcal-default-calendar-grid-css'  href='http://studentspl.us/wp-content/plugins/google-calendar-events/assets/css/default-calendar-grid.min.css?ver=3.1.9' type='text/css' media='all' />
+<link rel='stylesheet' id='simcal-default-calendar-list-css'  href='http://studentspl.us/wp-content/plugins/google-calendar-events/assets/css/default-calendar-list.min.css?ver=3.1.9' type='text/css' media='all' />
+<link rel='stylesheet' id='js_composer_front-css'  href='http://studentspl.us/wp-content/plugins/js_composer_theme/assets/css/js_composer.min.css?ver=5.0.1' type='text/css' media='all' />
+<link rel='stylesheet' id='theme-options-css'  href='https://studentspl.us/wp-content/uploads/mk_assets/theme-options-production-1520025551.css?ver=1520025551' type='text/css' media='all' />
+<link rel='stylesheet' id='ms-main-css'  href='http://studentspl.us/wp-content/plugins/masterslider/public/assets/css/masterslider.main.css?ver=3.1.1' type='text/css' media='all' />
+<link rel='stylesheet' id='ms-custom-css'  href='http://studentspl.us/wp-content/uploads/masterslider/custom.css?ver=1.1' type='text/css' media='all' />
+<script type='text/javascript' src='http://studentspl.us/wp-content/themes/jupiter/assets/js/plugins/wp-enqueue/min/webfontloader.js?ver=4.8.5'></script>
+<script type='text/javascript'>
+WebFontConfig = {
+	timeout: 2000
+}
+
+if ( mk_typekit_id.length > 0 ) {
+	WebFontConfig.typekit = {
+		id: mk_typekit_id
+	}
+}
+
+if ( mk_google_fonts.length > 0 ) {
+	WebFontConfig.google = {
+		families:  mk_google_fonts
+	}
+}
+
+if ( (mk_google_fonts.length > 0 || mk_typekit_id.length > 0) && navigator.userAgent.indexOf("Speed Insights") == -1) {
+	WebFont.load( WebFontConfig );
+}
+		
+</script>
+<script type='text/javascript' src='http://studentspl.us/wp-content/plugins/LayerSlider/static/layerslider/js/greensock.js?ver=1.19.0'></script>
+<script type='text/javascript' src='http://studentspl.us/wp-includes/js/jquery/jquery.js?ver=1.12.4'></script>
+<script type='text/javascript' src='http://studentspl.us/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var LS_Meta = {"v":"6.1.0"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='http://studentspl.us/wp-content/plugins/LayerSlider/static/layerslider/js/layerslider.kreaturamedia.jquery.js?ver=6.1.0'></script>
+<script type='text/javascript' src='http://studentspl.us/wp-content/plugins/LayerSlider/static/layerslider/js/layerslider.transitions.js?ver=6.1.0'></script>
+<meta name="generator" content="Powered by LayerSlider 6.1.0 - Multi-Purpose, Responsive, Parallax, Mobile-Friendly Slider Plugin for WordPress." />
+<!-- LayerSlider updates and docs at: https://layerslider.kreaturamedia.com -->
+<link rel='https://api.w.org/' href='https://studentspl.us/index.php?rest_route=/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://studentspl.us/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://studentspl.us/wp-includes/wlwmanifest.xml" /> 
+<meta name="generator" content="WordPress 4.8.5" />
+<link rel="canonical" href="https://studentspl.us/" />
+<link rel='shortlink' href='https://studentspl.us/' />
+<link rel="alternate" type="application/json+oembed" href="https://studentspl.us/index.php?rest_route=%2Foembed%2F1.0%2Fembed&#038;url=https%3A%2F%2Fstudentspl.us%2F" />
+<link rel="alternate" type="text/xml+oembed" href="https://studentspl.us/index.php?rest_route=%2Foembed%2F1.0%2Fembed&#038;url=https%3A%2F%2Fstudentspl.us%2F&#038;format=xml" />
+<script>var ms_grabbing_curosr='http://studentspl.us/wp-content/plugins/masterslider/public/assets/css/common/grabbing.cur',ms_grab_curosr='http://studentspl.us/wp-content/plugins/masterslider/public/assets/css/common/grab.cur';</script>
+<meta name="generator" content="MasterSlider 3.1.1 - Responsive Touch Image Slider" />
+<script> var isTest = false; </script>
+<meta itemprop="author" content="" /><meta itemprop="datePublished" content="September 12, 2017" /><meta itemprop="dateModified" content="March 2, 2018" /><meta itemprop="publisher" content="Digital Forensics Association" />		<style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style>
+		<meta name="generator" content="Powered by Visual Composer - drag and drop page builder for WordPress."/>
+<!--[if lte IE 9]><link rel="stylesheet" type="text/css" href="http://studentspl.us/wp-content/plugins/js_composer_theme/assets/css/vc_lte_ie9.min.css" media="screen"><![endif]--><meta name="generator" content="Jupiter 6.1.1" />
+<noscript><style type="text/css"> .wpb_animate_when_almost_visible { opacity: 1; }</style></noscript></head>
+
+<body class="home page-template-default page page-id-5 _masterslider _msp_version_3.1.1 wpb-js-composer js-comp-ver-5.0.1 vc_responsive" itemscope="itemscope" itemtype="https://schema.org/WebPage"  data-adminbar="">
+
+	
+	<!-- Target for scroll anchors to achieve native browser bahaviour + possible enhancements like smooth scrolling -->
+	<div id="top-of-page"></div>
+
+		<div id="mk-boxed-layout">
+
+			<div id="mk-theme-container" class="trans-header">
+
+				 
+    <header data-height='90'
+                data-sticky-height='55'
+                data-responsive-height='90'
+                data-transparent-skin='light'
+                data-header-style='1'
+                data-sticky-style='false'
+                data-sticky-offset='header' id="mk-header-1" class="mk-header header-style-1 header-align-center  toolbar-false menu-hover-2 sticky-style-false mk-background-stretch boxed-header  transparent-header light-skin bg-true" role="banner" itemscope="itemscope" itemtype="https://schema.org/WPHeader" >
+                    <div class="mk-header-holder">
+                                <div class="mk-header-inner add-header-height">
+
+                    <div class="mk-header-bg "></div>
+
+                    
+                                                <div class="mk-grid header-grid">
+                    
+                            <div class="mk-header-nav-container one-row-style menu-hover-style-2" role="navigation" itemscope="itemscope" itemtype="https://schema.org/SiteNavigationElement" >
+                                <nav class="mk-main-navigation js-main-nav"><ul id="menu-one-page" class="main-navigation-ul"><li id="menu-item-213" class="menu-item menu-item-type-custom menu-item-object-custom no-mega-menu"><a class="menu-item-link js-smooth-scroll"  href="#about">About</a></li>
+<li id="menu-item-249" class="menu-item menu-item-type-custom menu-item-object-custom no-mega-menu"><a class="menu-item-link js-smooth-scroll"  href="#employers">Employers</a></li>
+<li id="menu-item-250" class="menu-item menu-item-type-custom menu-item-object-custom no-mega-menu"><a class="menu-item-link js-smooth-scroll"  href="#calendar">Calendar of Events</a></li>
+<li id="menu-item-251" class="menu-item menu-item-type-custom menu-item-object-custom no-mega-menu"><a class="menu-item-link js-smooth-scroll"  href="#sponsors">Sponsors</a></li>
+<li id="menu-item-277" class="menu-item menu-item-type-custom menu-item-object-custom no-mega-menu"><a class="menu-item-link js-smooth-scroll"  href="https://twitter.com/professorgoel"><svg  class="mk-svg-icon" data-name="mk-moon-twitter" data-cacheid="icon-5a9c5401f1425" style=" height:16px; width: 16px; "  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M512 97.209c-18.838 8.354-39.082 14.001-60.33 16.54 21.686-13 38.343-33.585 46.186-58.115-20.298 12.039-42.778 20.78-66.705 25.49-19.16-20.415-46.461-33.17-76.673-33.17-58.011 0-105.044 47.029-105.044 105.039 0 8.233.929 16.25 2.72 23.939-87.3-4.382-164.701-46.2-216.509-109.753-9.042 15.514-14.223 33.558-14.223 52.809 0 36.444 18.544 68.596 46.73 87.433-17.219-.546-33.416-5.271-47.577-13.139-.01.438-.01.878-.01 1.321 0 50.894 36.209 93.348 84.261 103-8.813 2.4-18.094 3.686-27.674 3.686-6.769 0-13.349-.66-19.764-1.886 13.368 41.73 52.16 72.103 98.126 72.948-35.95 28.175-81.243 44.967-130.458 44.967-8.479 0-16.84-.497-25.058-1.47 46.486 29.805 101.701 47.197 161.021 47.197 193.211 0 298.868-160.062 298.868-298.872 0-4.554-.103-9.084-.305-13.59 20.528-14.81 38.336-33.31 52.418-54.374z"/></svg>Twitter Feed</a></li>
+</ul></nav>                            </div>
+                            
+<div class="mk-nav-responsive-link">
+    <div class="mk-css-icon-menu">
+        <div class="mk-css-icon-menu-line-1"></div>
+        <div class="mk-css-icon-menu-line-2"></div>
+        <div class="mk-css-icon-menu-line-3"></div>
+    </div>
+</div>	<div class=" header-logo fit-logo-img add-header-height  ">
+		<a href="https://studentspl.us/" title="Digital Forensics Association">
+
+			<img class="mk-desktop-logo dark-logo "
+				title=""
+				alt=""
+				src="https://studentspl.us/wp-content/uploads/2018/03/untitled-13x-2.png" />
+
+							<img class="mk-desktop-logo light-logo "
+					title=""
+					alt=""
+					src="https://studentspl.us/wp-content/uploads/2018/03/untitled-13x-1.png" />
+			
+			
+					</a>
+	</div>
+
+                                            </div>
+                    
+                    <div class="mk-header-right">
+                                            </div>
+
+                </div>
+                
+<div class="mk-responsive-wrap">
+
+	<nav class="menu-one-page-container"><ul id="menu-one-page-1" class="mk-responsive-nav"><li id="responsive-menu-item-213" class="menu-item menu-item-type-custom menu-item-object-custom"><a class="menu-item-link js-smooth-scroll"  href="#about">About</a></li>
+<li id="responsive-menu-item-249" class="menu-item menu-item-type-custom menu-item-object-custom"><a class="menu-item-link js-smooth-scroll"  href="#employers">Employers</a></li>
+<li id="responsive-menu-item-250" class="menu-item menu-item-type-custom menu-item-object-custom"><a class="menu-item-link js-smooth-scroll"  href="#calendar">Calendar of Events</a></li>
+<li id="responsive-menu-item-251" class="menu-item menu-item-type-custom menu-item-object-custom"><a class="menu-item-link js-smooth-scroll"  href="#sponsors">Sponsors</a></li>
+<li id="responsive-menu-item-277" class="menu-item menu-item-type-custom menu-item-object-custom"><a class="menu-item-link js-smooth-scroll"  href="https://twitter.com/professorgoel"><svg  class="mk-svg-icon" data-name="mk-moon-twitter" data-cacheid="icon-5a9c5401f385e" style=" height:16px; width: 16px; "  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M512 97.209c-18.838 8.354-39.082 14.001-60.33 16.54 21.686-13 38.343-33.585 46.186-58.115-20.298 12.039-42.778 20.78-66.705 25.49-19.16-20.415-46.461-33.17-76.673-33.17-58.011 0-105.044 47.029-105.044 105.039 0 8.233.929 16.25 2.72 23.939-87.3-4.382-164.701-46.2-216.509-109.753-9.042 15.514-14.223 33.558-14.223 52.809 0 36.444 18.544 68.596 46.73 87.433-17.219-.546-33.416-5.271-47.577-13.139-.01.438-.01.878-.01 1.321 0 50.894 36.209 93.348 84.261 103-8.813 2.4-18.094 3.686-27.674 3.686-6.769 0-13.349-.66-19.764-1.886 13.368 41.73 52.16 72.103 98.126 72.948-35.95 28.175-81.243 44.967-130.458 44.967-8.479 0-16.84-.497-25.058-1.47 46.486 29.805 101.701 47.197 161.021 47.197 193.211 0 298.868-160.062 298.868-298.872 0-4.554-.103-9.084-.305-13.59 20.528-14.81 38.336-33.31 52.418-54.374z"/></svg>Twitter Feed</a></li>
+</ul></nav>
+		
+
+</div>
+        
+            </div>
+        
+                        
+    </header>
+
+		<div id="theme-page" class="master-holder  clearfix" itemscope="itemscope" itemtype="https://schema.org/Blog" >
+			<div class="master-holder-bg-holder">
+				<div id="theme-page-bg" class="master-holder-bg js-el"  ></div>
+			</div>
+			<div class="mk-main-wrapper-holder">
+				<div id="mk-page-id-5" class="theme-page-wrapper mk-main-wrapper mk-grid full-layout no-padding">
+					<div class="theme-content no-padding" itemprop="mainEntityOfPage">
+							
+<div class="mk-page-section-wrapper" data-mk-full-width="true" data-mk-full-width-init="true" data-mk-stretch-content="true">
+    <div id="page-section-2"class="mk-page-section self-hosted   full_layout full-width-2 js-el js-master-row     center-y"    data-intro-effect="false">
+
+
+            
+            <div class="mk-page-section-inner">
+                
+
+
+<div style="background-color:#4f48c0;opacity:0.2;" class="mk-video-color-mask"></div>
+
+                
+                
+			<div class="mk-section-preloader js-el" data-mk-component="Preloader">
+			<div class="mk-section-preloader__icon"></div>
+		</div>
+		
+
+	<div class="background-layer-holder">
+		<div id="background-layer--2" data-mk-lazyload="false" class="background-layer mk-background-stretch none-blend-effect js-el" data-mk-component="Parallax" data-parallax-config='{"speed" : 0.3 }'  data-mk-img-set='{"landscape":{"desktop":"https://studentspl.us/wp-content/uploads/2017/09/882.jpg","tablet":"https://studentspl.us/wp-content/uploads/2017/09/882-1024x768.jpg","mobile":"https://studentspl.us/wp-content/uploads/2017/09/882-736x414.jpg"},"responsive":"true"}' >
+									<div class="mk-color-layer"></div>
+		</div>
+	</div>
+
+            </div>
+
+            
+        <div class="page-section-content vc_row-fluid mk-grid " >
+            <div class="mk-padding-wrapper wpb_row">
+<div class="vc_col-sm-12 wpb_column column_container   _ height-full">
+	
+<div id="padding-4" class="mk-padding-divider   clearfix"></div>
+
+
+<div id="padding-5" class="mk-padding-divider visible-sm  clearfix"></div>
+
+
+<h1 id="fancy-title-6" class="mk-fancy-title  mk-animate-element top-to-bottom  simple-style   color-single">
+	<span>
+				<p>Cyber Jobs Week</p>
+			</span>
+</h1>
+<div class="clearboth"></div>
+
+
+
+
+<h3 id="fancy-title-7" class="mk-fancy-title  mk-animate-element top-to-bottom  simple-style   color-single">
+	<span>
+				<p>March 5-8, 2018</p>
+			</span>
+</h3>
+<div class="clearboth"></div>
+
+
+
+
+<h3 id="fancy-title-8" class="mk-fancy-title  simple-style   color-single">
+	<span>
+				<p>Massry Center for Business</p>
+			</span>
+</h3>
+<div class="clearboth"></div>
+
+
+
+
+<div id="mk-button-9" class="mk-button-container _ relative   mk-animate-element fade-in  mk-button--anim-side block text-center ">
+
+	
+		<a href="https://twitter.com/search?f=tweets&amp;q=%23UAlbanyCyberJobsWeek&amp;src=typd" target="_self" class="mk-button js-smooth-scroll mk-button--dimension-outline mk-button--size-large mk-button--corner-rounded skin-light _ relative text-center font-weight-700 no-backface  letter-spacing-2 inline"><span class="mk-button--text">#UAlbanyCyberJobsWeek</span></a>
+
+	
+</div>
+</div>
+</div>
+            <div class="clearboth"></div>
+        </div>
+
+
+            
+            
+            <div class="mk-shape-divider mk-shape-divider--stick diagonal-bottom-style small-size mk-shape-divider--stick-bottom" id="mk-shape-divider-10">
+			<div class="shape__container">
+				<div class="shape">
+				
+		<svg width="100%" height="70px"><defs><pattern id="shapeDividerPattern-10" preserveaspectratio="none" style="background-repeat: none;" patternunits="userSpaceOnUse" x="0" y="0" width="100%" height="700px" viewbox="0 0 100 700"><polygon fill="#fff" points="100,70 100,0 0,70 "></polygon></pattern></defs><!-- Background --><rect x="0" y="0" width="100%" height="70px" fill="url(#shapeDividerPattern-10)"></rect></svg>
+</div>
+			</div>
+		</div>
+
+        <div class="clearboth"></div>
+    </div>
+</div>
+<div class="vc_row-full-width vc_clearfix"></div>
+
+
+<div  id="about" data-mk-stretch-content="true" class="wpb_row vc_row vc_row-fluid  mk-fullwidth-false  attched-false     js-master-row  mk-grid">
+				
+<div class="vc_col-sm-12 wpb_column column_container   _ height-full">
+	
+<div id="padding-12" class="mk-padding-divider   clearfix"></div>
+
+
+<div class="mk-event-countdown  " data-offset="-5" data-date="3/5/2018 11:00:00">
+
+    
+    <ul class="mk-event-countdown-ul">
+        <li>
+            <span class="days timestamp">00</span>
+            <span class="timeRef">days</span>
+        </li>
+        <li>
+            <span class="hours timestamp">00</span>
+            <span class="timeRef">hours</span>
+        </li>
+        <li>
+            <span class="minutes timestamp">00</span>
+            <span class="timeRef">minutes</span>
+        </li>
+        <li>
+            <span class="seconds timestamp">00</span>
+            <span class="timeRef">seconds</span>
+        </li>
+    </ul>
+
+</div>
+<div id="padding-13" class="mk-padding-divider   clearfix"></div>
+
+
+<h2 id="fancy-title-14" class="mk-fancy-title  simple-style   color-single">
+	<span>
+				<p>What is it?</p>
+			</span>
+</h2>
+<div class="clearboth"></div>
+
+
+
+
+<span id="fancy-title-15" class="mk-fancy-title  simple-style   color-single">
+	<span>
+				<p>In the first annual Cyber Jobs Week, you will have an opportunity to network, meet with potential employers, and receive a well-deserved placement. We are not only looking to place in firms for permanent jobs but also to place our students for internships.</p>
+			</span>
+</span>
+<div class="clearboth"></div>
+
+
+
+
+<h2 id="fancy-title-16" class="mk-fancy-title  simple-style   color-single">
+	<span>
+				<p>Who is it for?</p>
+			</span>
+</h2>
+<div class="clearboth"></div>
+
+
+
+
+<span id="fancy-title-17" class="mk-fancy-title  simple-style   color-single">
+	<span>
+				<p>This event is open to seniors, as well as juniors and sophomores. It is also open to MBA students with a cybersecurity track.</p>
+			</span>
+</span>
+<div class="clearboth"></div>
+
+
+
+
+<div id="padding-18" class="mk-padding-divider   clearfix"></div>
+
+</div>
+	</div>
+
+<div class="mk-page-section-wrapper" data-mk-full-width="true" data-mk-full-width-init="true" data-mk-stretch-content="true">
+    <div id="employers"class="mk-page-section self-hosted   full_layout full-width-19 js-el js-master-row     center-y"    data-intro-effect="false">
+
+
+            <div class="mk-shape-divider mk-shape-divider--stick diagonal-top-style small-size mk-shape-divider--stick-top" id="mk-shape-divider-20">
+			<div class="shape__container">
+				<div class="shape">
+				
+		<svg width="100%" height="70px"><defs><pattern id="shapeDividerPattern-20" preserveaspectratio="none" style="background-repeat: none;" patternunits="userSpaceOnUse" x="0" y="0" width="100%" height="700px" viewbox="0 0 100 700"><polygon fill="#fff" points="0,0 0,70 100,0 "></polygon></pattern></defs><!-- Background --><rect x="0" y="0" width="100%" height="70px" fill="url(#shapeDividerPattern-20)"></rect></svg>
+</div>
+			</div>
+		</div>
+            <div class="mk-page-section-inner">
+                
+
+
+<div class="mk-video-color-mask"></div>
+
+                
+                            </div>
+
+            
+        <div class="page-section-content vc_row-fluid mk-grid " >
+            <div class="mk-padding-wrapper wpb_row">
+<div class="vc_col-sm-12 wpb_column column_container   _ height-full">
+	
+<div id="padding-22" class="mk-padding-divider   clearfix"></div>
+
+
+<h2 id="fancy-title-23" class="mk-fancy-title  simple-style   color-single">
+	<span>
+				<p>Employers</p>
+			</span>
+</h2>
+<div class="clearboth"></div>
+
+
+
+
+
+
+<section id="gallery-loop-24" data-query="eyJwb3N0X3R5cGUiOiJhdHRhY2htZW50IiwiY291bnQiOi0xLCJwb3N0cyI6IjIzNSwyMzQsMjYzLDI2NCwyNjUsMjY2LDI2NywyNjgsMjY5LDI3MSwyNzIsMjc5Iiwib3JkZXJieSI6ImRhdGUiLCJvcmRlciI6IkFTQyJ9" data-loop-atts="eyJzaG9ydGNvZGVfbmFtZSI6Im1rX2dhbGxlcnkiLCJzdHlsZSI6ImdyaWQiLCJtYXNvbnJheV9zdHlsZSI6ImdyaWQiLCJob3Zlcl9zY2VuYXJpb3MiOiJmYWRlYm94IiwiY29sbGVjdGlvbl90aXRsZSI6IiIsImRpc2FibGVfdGl0bGUiOiJmYWxzZSIsImNvbHVtbl9jc3MiOiJmb3VyLWNvbHVtbiIsImZyYW1lX3N0eWxlIjoic2ltcGxlIiwiY3VzdG9tX2xpbmtzIjpbIiJdLCJpbWFnZV9zaXplIjoiY3JvcCIsImhlaWdodCI6IjI1MCIsImNvbHVtbiI6IjQiLCJpZCI6MjQsImxhenlsb2FkIjoiZmFsc2UiLCJpIjowfQ==" data-pagination-style="1" data-max-pages="0" data-loop-iterator="-1" class="mk-gallery   js-loop js-el clearfix mk-gallery-lazyload">
+
+    
+<article class="four-column mk-gallery-item hover-fadebox simple-frame hover-title-false">
+    <div class="item-holder">
+        
+
+
+    <div class="image-hover-overlay">
+            </div>
+      
+    
+        <a href="https://studentspl.us/wp-content/uploads/2017/09/11064_ey-logo.jpg" alt="" title="11064_ey-logo" data-fancybox-group="gallery-24" class="mk-lightbox  mk-image-lightbox">
+            <svg  class="mk-svg-icon" data-name="mk-jupiter-icon-plus-circle" data-cacheid="icon-5a9c540210a61" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M240 24c115.2 0 209.6 94.4 209.6 209.6s-94.4 209.6-209.6 209.6-209.6-94.4-209.6-209.6 94.4-209.6 209.6-209.6zm0-30.4c-132.8 0-240 107.2-240 240s107.2 240 240 240 240-107.2 240-240-107.2-240-240-240zm80 256h-160c-9.6 0-16-6.4-16-16s6.4-16 16-16h160c9.6 0 16 6.4 16 16s-6.4 16-16 16zm-80 80c-9.6 0-16-6.4-16-16v-160c0-9.6 6.4-16 16-16s16 6.4 16 16v160c0 9.6-6.4 16-16 16z"/></svg>        </a>
+
+    
+ 
+ <span class="gallery-inner">
+    <img class="mk-gallery-image" src="https://studentspl.us/wp-content/uploads/bfi_thumb/dummy-transparent-nifek5qzx30aqmqyav2hpteet1d9g07px8xxkax7yc.png" 
+        data-mk-image-src-set='{"default":"https://studentspl.us/wp-content/uploads/bfi_thumb/11064_ey-logo-nmm17mou3s9qprdw2bo5adeyun5tx53mk48fawzybo.jpg","2x":"https://studentspl.us/wp-content/uploads/bfi_thumb/11064_ey-logo-nmm17mox9dc1y3k2pgmr6z70wi7kmuy4rg80g6jtag.jpg","mobile":"","responsive":"true"}'        height="250" 
+        width="259" 
+        title="11064_ey-logo"
+        alt=""  />
+ </span>
+
+
+    </div>
+</article>
+<article class="four-column mk-gallery-item hover-fadebox simple-frame hover-title-false">
+    <div class="item-holder">
+        
+
+
+    <div class="image-hover-overlay">
+            </div>
+      
+    
+        <a href="https://studentspl.us/wp-content/uploads/2017/09/pwc_logo_pricewaterhousecoopers-1024x788.png" alt="" title="pwc_logo_pricewaterhousecoopers-1024&#215;788" data-fancybox-group="gallery-24" class="mk-lightbox  mk-image-lightbox">
+            <svg  class="mk-svg-icon" data-name="mk-jupiter-icon-plus-circle" data-cacheid="icon-5a9c540217fba" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M240 24c115.2 0 209.6 94.4 209.6 209.6s-94.4 209.6-209.6 209.6-209.6-94.4-209.6-209.6 94.4-209.6 209.6-209.6zm0-30.4c-132.8 0-240 107.2-240 240s107.2 240 240 240 240-107.2 240-240-107.2-240-240-240zm80 256h-160c-9.6 0-16-6.4-16-16s6.4-16 16-16h160c9.6 0 16 6.4 16 16s-6.4 16-16 16zm-80 80c-9.6 0-16-6.4-16-16v-160c0-9.6 6.4-16 16-16s16 6.4 16 16v160c0 9.6-6.4 16-16 16z"/></svg>        </a>
+
+    
+ 
+ <span class="gallery-inner">
+    <img class="mk-gallery-image" src="https://studentspl.us/wp-content/uploads/bfi_thumb/dummy-transparent-nifek5qzx30aqmqyav2hpteet1d9g07px8xxkax7yc.png" 
+        data-mk-image-src-set='{"default":"https://studentspl.us/wp-content/uploads/bfi_thumb/pwc_logo_pricewaterhousecoopers-1024x788-nmm18s1qghucwlptctjqc2z8zlhzbtntdsxsf3ampw.png","2x":"https://studentspl.us/wp-content/uploads/bfi_thumb/pwc_logo_pricewaterhousecoopers-1024x788-nmm18s1tm2wo4xvzzyic8orb1gjq1jibl4xdkcuhoo.png","mobile":"","responsive":"true"}'        height="250" 
+        width="259" 
+        title="pwc_logo_pricewaterhousecoopers-1024&#215;788"
+        alt=""  />
+ </span>
+
+
+    </div>
+</article>
+<article class="four-column mk-gallery-item hover-fadebox simple-frame hover-title-false">
+    <div class="item-holder">
+        
+
+
+    <div class="image-hover-overlay">
+            </div>
+      
+    
+        <a href="https://studentspl.us/wp-content/uploads/2017/09/heaujcjs_400x400.jpg" alt="" title="heaujcjs_400x400" data-fancybox-group="gallery-24" class="mk-lightbox  mk-image-lightbox">
+            <svg  class="mk-svg-icon" data-name="mk-jupiter-icon-plus-circle" data-cacheid="icon-5a9c5402197a3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M240 24c115.2 0 209.6 94.4 209.6 209.6s-94.4 209.6-209.6 209.6-209.6-94.4-209.6-209.6 94.4-209.6 209.6-209.6zm0-30.4c-132.8 0-240 107.2-240 240s107.2 240 240 240 240-107.2 240-240-107.2-240-240-240zm80 256h-160c-9.6 0-16-6.4-16-16s6.4-16 16-16h160c9.6 0 16 6.4 16 16s-6.4 16-16 16zm-80 80c-9.6 0-16-6.4-16-16v-160c0-9.6 6.4-16 16-16s16 6.4 16 16v160c0 9.6-6.4 16-16 16z"/></svg>        </a>
+
+    
+ 
+ <span class="gallery-inner">
+    <img class="mk-gallery-image" src="https://studentspl.us/wp-content/uploads/bfi_thumb/dummy-transparent-nifek5qzx30aqmqyav2hpteet1d9g07px8xxkax7yc.png" 
+        data-mk-image-src-set='{"default":"https://studentspl.us/wp-content/uploads/bfi_thumb/heaujcjs_400x400-nmm4tqim38djqoedc2a3x1guxnvucwm3g30xoq372c.jpg","2x":"https://studentspl.us/wp-content/uploads/bfi_thumb/heaujcjs_400x400-nmm4tqip8tfuz0kjz78ptn8wzixl2mglnf0itzn214.jpg","mobile":"","responsive":"true"}'        height="250" 
+        width="259" 
+        title="heaujcjs_400x400"
+        alt=""  />
+ </span>
+
+
+    </div>
+</article>
+<article class="four-column mk-gallery-item hover-fadebox simple-frame hover-title-false">
+    <div class="item-holder">
+        
+
+
+    <div class="image-hover-overlay">
+            </div>
+      
+    
+        <a href="https://studentspl.us/wp-content/uploads/2017/09/160x160_400x400.jpg" alt="" title="160x160_400x400" data-fancybox-group="gallery-24" class="mk-lightbox  mk-image-lightbox">
+            <svg  class="mk-svg-icon" data-name="mk-jupiter-icon-plus-circle" data-cacheid="icon-5a9c54021b9f3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M240 24c115.2 0 209.6 94.4 209.6 209.6s-94.4 209.6-209.6 209.6-209.6-94.4-209.6-209.6 94.4-209.6 209.6-209.6zm0-30.4c-132.8 0-240 107.2-240 240s107.2 240 240 240 240-107.2 240-240-107.2-240-240-240zm80 256h-160c-9.6 0-16-6.4-16-16s6.4-16 16-16h160c9.6 0 16 6.4 16 16s-6.4 16-16 16zm-80 80c-9.6 0-16-6.4-16-16v-160c0-9.6 6.4-16 16-16s16 6.4 16 16v160c0 9.6-6.4 16-16 16z"/></svg>        </a>
+
+    
+ 
+ <span class="gallery-inner">
+    <img class="mk-gallery-image" src="https://studentspl.us/wp-content/uploads/bfi_thumb/dummy-transparent-nifek5qzx30aqmqyav2hpteet1d9g07px8xxkax7yc.png" 
+        data-mk-image-src-set='{"default":"https://studentspl.us/wp-content/uploads/bfi_thumb/160x160_400x400-nmm4wh7o0u4nlqf0bqxxouk9b4ddt4hwtnix2s0ux0.jpg","2x":"https://studentspl.us/wp-content/uploads/bfi_thumb/160x160_400x400-nmm4wh7r6f6yu2l6yvwjlgcbczf4iucf0zii81kpvs.jpg","mobile":"","responsive":"true"}'        height="250" 
+        width="259" 
+        title="160x160_400x400"
+        alt=""  />
+ </span>
+
+
+    </div>
+</article>
+<article class="four-column mk-gallery-item hover-fadebox simple-frame hover-title-false">
+    <div class="item-holder">
+        
+
+
+    <div class="image-hover-overlay">
+            </div>
+      
+    
+        <a href="https://studentspl.us/wp-content/uploads/2017/09/kpmg-logo.jpg" alt="" title="kpmg-logo" data-fancybox-group="gallery-24" class="mk-lightbox  mk-image-lightbox">
+            <svg  class="mk-svg-icon" data-name="mk-jupiter-icon-plus-circle" data-cacheid="icon-5a9c54021ebac" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M240 24c115.2 0 209.6 94.4 209.6 209.6s-94.4 209.6-209.6 209.6-209.6-94.4-209.6-209.6 94.4-209.6 209.6-209.6zm0-30.4c-132.8 0-240 107.2-240 240s107.2 240 240 240 240-107.2 240-240-107.2-240-240-240zm80 256h-160c-9.6 0-16-6.4-16-16s6.4-16 16-16h160c9.6 0 16 6.4 16 16s-6.4 16-16 16zm-80 80c-9.6 0-16-6.4-16-16v-160c0-9.6 6.4-16 16-16s16 6.4 16 16v160c0 9.6-6.4 16-16 16z"/></svg>        </a>
+
+    
+ 
+ <span class="gallery-inner">
+    <img class="mk-gallery-image" src="https://studentspl.us/wp-content/uploads/bfi_thumb/dummy-transparent-nifek5qzx30aqmqyav2hpteet1d9g07px8xxkax7yc.png" 
+        data-mk-image-src-set='{"default":"https://studentspl.us/wp-content/uploads/bfi_thumb/kpmg-logo-nmm4xacnwp8jln8olljdc57jq2drfqpl9nqyyctnk4.jpg","2x":"https://studentspl.us/wp-content/uploads/bfi_thumb/kpmg-logo-nmm4xacr2aautzev8qhz8qzlrxfi5gk3gzqk3mdiiw.jpg","mobile":"","responsive":"true"}'        height="250" 
+        width="259" 
+        title="kpmg-logo"
+        alt=""  />
+ </span>
+
+
+    </div>
+</article>
+<article class="four-column mk-gallery-item hover-fadebox simple-frame hover-title-false">
+    <div class="item-holder">
+        
+
+
+    <div class="image-hover-overlay">
+            </div>
+      
+    
+        <a href="https://studentspl.us/wp-content/uploads/2017/09/unnamed.jpg" alt="" title="unnamed" data-fancybox-group="gallery-24" class="mk-lightbox  mk-image-lightbox">
+            <svg  class="mk-svg-icon" data-name="mk-jupiter-icon-plus-circle" data-cacheid="icon-5a9c54022082d" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M240 24c115.2 0 209.6 94.4 209.6 209.6s-94.4 209.6-209.6 209.6-209.6-94.4-209.6-209.6 94.4-209.6 209.6-209.6zm0-30.4c-132.8 0-240 107.2-240 240s107.2 240 240 240 240-107.2 240-240-107.2-240-240-240zm80 256h-160c-9.6 0-16-6.4-16-16s6.4-16 16-16h160c9.6 0 16 6.4 16 16s-6.4 16-16 16zm-80 80c-9.6 0-16-6.4-16-16v-160c0-9.6 6.4-16 16-16s16 6.4 16 16v160c0 9.6-6.4 16-16 16z"/></svg>        </a>
+
+    
+ 
+ <span class="gallery-inner">
+    <img class="mk-gallery-image" src="https://studentspl.us/wp-content/uploads/bfi_thumb/dummy-transparent-nifek5qzx30aqmqyav2hpteet1d9g07px8xxkax7yc.png" 
+        data-mk-image-src-set='{"default":"https://studentspl.us/wp-content/uploads/bfi_thumb/unnamed-nmm4yvothlf19uxeasbm28qnykj5ha17tjjl88gn0k.jpg","2x":"https://studentspl.us/wp-content/uploads/bfi_thumb/unnamed-nmm4yvown6hci73kxxa7yuiq0fkw6zvq0vj6di0hzc.jpg","mobile":"","responsive":"true"}'        height="250" 
+        width="259" 
+        title="unnamed"
+        alt=""  />
+ </span>
+
+
+    </div>
+</article>
+<article class="four-column mk-gallery-item hover-fadebox simple-frame hover-title-false">
+    <div class="item-holder">
+        
+
+
+    <div class="image-hover-overlay">
+            </div>
+      
+    
+        <a href="https://studentspl.us/wp-content/uploads/2017/09/biowlm0g_400x400.png" alt="" title="biowlm0g_400x400" data-fancybox-group="gallery-24" class="mk-lightbox  mk-image-lightbox">
+            <svg  class="mk-svg-icon" data-name="mk-jupiter-icon-plus-circle" data-cacheid="icon-5a9c54022245e" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M240 24c115.2 0 209.6 94.4 209.6 209.6s-94.4 209.6-209.6 209.6-209.6-94.4-209.6-209.6 94.4-209.6 209.6-209.6zm0-30.4c-132.8 0-240 107.2-240 240s107.2 240 240 240 240-107.2 240-240-107.2-240-240-240zm80 256h-160c-9.6 0-16-6.4-16-16s6.4-16 16-16h160c9.6 0 16 6.4 16 16s-6.4 16-16 16zm-80 80c-9.6 0-16-6.4-16-16v-160c0-9.6 6.4-16 16-16s16 6.4 16 16v160c0 9.6-6.4 16-16 16z"/></svg>        </a>
+
+    
+ 
+ <span class="gallery-inner">
+    <img class="mk-gallery-image" src="https://studentspl.us/wp-content/uploads/bfi_thumb/dummy-transparent-nifek5qzx30aqmqyav2hpteet1d9g07px8xxkax7yc.png" 
+        data-mk-image-src-set='{"default":"https://studentspl.us/wp-content/uploads/bfi_thumb/biowlm0g_400x400-nmm4zmy4zsgcmjtsvm3skjv16qssoi1flago59c804.png","2x":"https://studentspl.us/wp-content/uploads/bfi_thumb/biowlm0g_400x400-nmm4zmy85dinuvzzir2eh5n38luje7vxsmg9aiw2yw.png","mobile":"","responsive":"true"}'        height="250" 
+        width="259" 
+        title="biowlm0g_400x400"
+        alt=""  />
+ </span>
+
+
+    </div>
+</article>
+<article class="four-column mk-gallery-item hover-fadebox simple-frame hover-title-false">
+    <div class="item-holder">
+        
+
+
+    <div class="image-hover-overlay">
+            </div>
+      
+    
+        <a href="https://studentspl.us/wp-content/uploads/2017/09/1200px-general_electric_logo.svg_.png" alt="" title="1200px-general_electric_logo.svg_" data-fancybox-group="gallery-24" class="mk-lightbox  mk-image-lightbox">
+            <svg  class="mk-svg-icon" data-name="mk-jupiter-icon-plus-circle" data-cacheid="icon-5a9c5402242ff" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M240 24c115.2 0 209.6 94.4 209.6 209.6s-94.4 209.6-209.6 209.6-209.6-94.4-209.6-209.6 94.4-209.6 209.6-209.6zm0-30.4c-132.8 0-240 107.2-240 240s107.2 240 240 240 240-107.2 240-240-107.2-240-240-240zm80 256h-160c-9.6 0-16-6.4-16-16s6.4-16 16-16h160c9.6 0 16 6.4 16 16s-6.4 16-16 16zm-80 80c-9.6 0-16-6.4-16-16v-160c0-9.6 6.4-16 16-16s16 6.4 16 16v160c0 9.6-6.4 16-16 16z"/></svg>        </a>
+
+    
+ 
+ <span class="gallery-inner">
+    <img class="mk-gallery-image" src="https://studentspl.us/wp-content/uploads/bfi_thumb/dummy-transparent-nifek5qzx30aqmqyav2hpteet1d9g07px8xxkax7yc.png" 
+        data-mk-image-src-set='{"default":"https://studentspl.us/wp-content/uploads/bfi_thumb/1200px-general_electric_logo.svg_-nmm507ml658npyzriv1l3en697yvdubj04tcpchk78.png","2x":"https://studentspl.us/wp-content/uploads/bfi_thumb/1200px-general_electric_logo.svg_-nmm507mobqayyb5y600700f8b30m3k617gsxum1f60.png","mobile":"","responsive":"true"}'        height="250" 
+        width="259" 
+        title="1200px-general_electric_logo.svg_"
+        alt=""  />
+ </span>
+
+
+    </div>
+</article>
+<article class="four-column mk-gallery-item hover-fadebox simple-frame hover-title-false">
+    <div class="item-holder">
+        
+
+
+    <div class="image-hover-overlay">
+            </div>
+      
+    
+        <a href="https://studentspl.us/wp-content/uploads/2017/09/download.png" alt="" title="download" data-fancybox-group="gallery-24" class="mk-lightbox  mk-image-lightbox">
+            <svg  class="mk-svg-icon" data-name="mk-jupiter-icon-plus-circle" data-cacheid="icon-5a9c54022639b" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M240 24c115.2 0 209.6 94.4 209.6 209.6s-94.4 209.6-209.6 209.6-209.6-94.4-209.6-209.6 94.4-209.6 209.6-209.6zm0-30.4c-132.8 0-240 107.2-240 240s107.2 240 240 240 240-107.2 240-240-107.2-240-240-240zm80 256h-160c-9.6 0-16-6.4-16-16s6.4-16 16-16h160c9.6 0 16 6.4 16 16s-6.4 16-16 16zm-80 80c-9.6 0-16-6.4-16-16v-160c0-9.6 6.4-16 16-16s16 6.4 16 16v160c0 9.6-6.4 16-16 16z"/></svg>        </a>
+
+    
+ 
+ <span class="gallery-inner">
+    <img class="mk-gallery-image" src="https://studentspl.us/wp-content/uploads/bfi_thumb/dummy-transparent-nifek5qzx30aqmqyav2hpteet1d9g07px8xxkax7yc.png" 
+        data-mk-image-src-set='{"default":"https://studentspl.us/wp-content/uploads/bfi_thumb/download-nmm52icdvkdw3nnm3usr6trqj4n677fwni82xp2wzo.png","2x":"https://studentspl.us/wp-content/uploads/bfi_thumb/download-nmm52ich15g7bztsqzrd3fjskzowwxaeuu7o2ymryg.png","mobile":"","responsive":"true"}'        height="250" 
+        width="259" 
+        title="download"
+        alt=""  />
+ </span>
+
+
+    </div>
+</article>
+<article class="four-column mk-gallery-item hover-fadebox simple-frame hover-title-false">
+    <div class="item-holder">
+        
+
+
+    <div class="image-hover-overlay">
+            </div>
+      
+    
+        <a href="https://studentspl.us/wp-content/uploads/2017/09/grey.jpg" alt="" title="grey" data-fancybox-group="gallery-24" class="mk-lightbox  mk-image-lightbox">
+            <svg  class="mk-svg-icon" data-name="mk-jupiter-icon-plus-circle" data-cacheid="icon-5a9c540227f14" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M240 24c115.2 0 209.6 94.4 209.6 209.6s-94.4 209.6-209.6 209.6-209.6-94.4-209.6-209.6 94.4-209.6 209.6-209.6zm0-30.4c-132.8 0-240 107.2-240 240s107.2 240 240 240 240-107.2 240-240-107.2-240-240-240zm80 256h-160c-9.6 0-16-6.4-16-16s6.4-16 16-16h160c9.6 0 16 6.4 16 16s-6.4 16-16 16zm-80 80c-9.6 0-16-6.4-16-16v-160c0-9.6 6.4-16 16-16s16 6.4 16 16v160c0 9.6-6.4 16-16 16z"/></svg>        </a>
+
+    
+ 
+ <span class="gallery-inner">
+    <img class="mk-gallery-image" src="https://studentspl.us/wp-content/uploads/bfi_thumb/dummy-transparent-nifek5qzx30aqmqyav2hpteet1d9g07px8xxkax7yc.png" 
+        data-mk-image-src-set='{"default":"https://studentspl.us/wp-content/uploads/bfi_thumb/grey-nmm5dmrmqzm1hjhz5nvtp0q3l9tja9lk6k4xdkl7d0.jpg","2x":"https://studentspl.us/wp-content/uploads/bfi_thumb/grey-nmm5dmrpwkocpvo5ssuflmi5n4v9zzg2dw4iiu52bs.jpg","mobile":"","responsive":"true"}'        height="250" 
+        width="259" 
+        title="grey"
+        alt=""  />
+ </span>
+
+
+    </div>
+</article>
+<article class="four-column mk-gallery-item hover-fadebox simple-frame hover-title-false">
+    <div class="item-holder">
+        
+
+
+    <div class="image-hover-overlay">
+            </div>
+      
+    
+        <a href="https://studentspl.us/wp-content/uploads/2017/09/download.jpg" alt="" title="download" data-fancybox-group="gallery-24" class="mk-lightbox  mk-image-lightbox">
+            <svg  class="mk-svg-icon" data-name="mk-jupiter-icon-plus-circle" data-cacheid="icon-5a9c54022a875" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M240 24c115.2 0 209.6 94.4 209.6 209.6s-94.4 209.6-209.6 209.6-209.6-94.4-209.6-209.6 94.4-209.6 209.6-209.6zm0-30.4c-132.8 0-240 107.2-240 240s107.2 240 240 240 240-107.2 240-240-107.2-240-240-240zm80 256h-160c-9.6 0-16-6.4-16-16s6.4-16 16-16h160c9.6 0 16 6.4 16 16s-6.4 16-16 16zm-80 80c-9.6 0-16-6.4-16-16v-160c0-9.6 6.4-16 16-16s16 6.4 16 16v160c0 9.6-6.4 16-16 16z"/></svg>        </a>
+
+    
+ 
+ <span class="gallery-inner">
+    <img class="mk-gallery-image" src="https://studentspl.us/wp-content/uploads/bfi_thumb/dummy-transparent-nifek5qzx30aqmqyav2hpteet1d9g07px8xxkax7yc.png" 
+        data-mk-image-src-set='{"default":"https://studentspl.us/wp-content/uploads/bfi_thumb/download-nmm5e5kejobrxqqo3w0d2vzbgz8vk7o6x56mz3tbwk.jpg","2x":"https://studentspl.us/wp-content/uploads/bfi_thumb/download-nmm5e5khp9e362wur0yyzhrdiuam9xip4h684dd6vc.jpg","mobile":"","responsive":"true"}'        height="250" 
+        width="259" 
+        title="download"
+        alt=""  />
+ </span>
+
+
+    </div>
+</article>
+<article class="four-column mk-gallery-item hover-fadebox simple-frame hover-title-false">
+    <div class="item-holder">
+        
+
+
+    <div class="image-hover-overlay">
+            </div>
+      
+    
+        <a href="https://studentspl.us/wp-content/uploads/2017/09/rational-enterprise-logo-270x280.jpg" alt="" title="rational-enterprise-logo-270&#215;280" data-fancybox-group="gallery-24" class="mk-lightbox  mk-image-lightbox">
+            <svg  class="mk-svg-icon" data-name="mk-jupiter-icon-plus-circle" data-cacheid="icon-5a9c54022bfe3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M240 24c115.2 0 209.6 94.4 209.6 209.6s-94.4 209.6-209.6 209.6-209.6-94.4-209.6-209.6 94.4-209.6 209.6-209.6zm0-30.4c-132.8 0-240 107.2-240 240s107.2 240 240 240 240-107.2 240-240-107.2-240-240-240zm80 256h-160c-9.6 0-16-6.4-16-16s6.4-16 16-16h160c9.6 0 16 6.4 16 16s-6.4 16-16 16zm-80 80c-9.6 0-16-6.4-16-16v-160c0-9.6 6.4-16 16-16s16 6.4 16 16v160c0 9.6-6.4 16-16 16z"/></svg>        </a>
+
+    
+ 
+ <span class="gallery-inner">
+    <img class="mk-gallery-image" src="https://studentspl.us/wp-content/uploads/bfi_thumb/dummy-transparent-nifek5qzx30aqmqyav2hpteet1d9g07px8xxkax7yc.png" 
+        data-mk-image-src-set='{"default":"https://studentspl.us/wp-content/uploads/bfi_thumb/rational-enterprise-logo-270x280-nmnc7j8ppacyhvstj5q6uxcrtlzbw0ucu9krvye8hw.jpg","2x":"https://studentspl.us/wp-content/uploads/bfi_thumb/rational-enterprise-logo-270x280-nmnc7j8suvf9q7z06aosrj4tvh12lqov1lkd17y3go.jpg","mobile":"","responsive":"true"}'        height="250" 
+        width="259" 
+        title="rational-enterprise-logo-270&#215;280"
+        alt=""  />
+ </span>
+
+
+    </div>
+</article><div class="clearboth"></div>    
+</section>
+
+<input type="hidden" id="safe_load_more" name="safe_load_more" value="d2a16886a3" /><input type="hidden" name="_wp_http_referer" value="/" />
+
+<div id="padding-25" class="mk-padding-divider   clearfix"></div>
+
+</div>
+</div>
+            <div class="clearboth"></div>
+        </div>
+
+
+            
+            
+            <div class="mk-shape-divider mk-shape-divider--stick diagonal-bottom-style small-size mk-shape-divider--stick-bottom" id="mk-shape-divider-26">
+			<div class="shape__container">
+				<div class="shape">
+				
+		<svg width="100%" height="70px"><defs><pattern id="shapeDividerPattern-26" preserveaspectratio="none" style="background-repeat: none;" patternunits="userSpaceOnUse" x="0" y="0" width="100%" height="700px" viewbox="0 0 100 700"><polygon fill="#fff" points="100,70 100,0 0,70 "></polygon></pattern></defs><!-- Background --><rect x="0" y="0" width="100%" height="70px" fill="url(#shapeDividerPattern-26)"></rect></svg>
+</div>
+			</div>
+		</div>
+
+        <div class="clearboth"></div>
+    </div>
+</div>
+<div class="vc_row-full-width vc_clearfix"></div>
+
+
+<div  id="calendar" data-mk-stretch-content="true" class="wpb_row vc_row vc_row-fluid  mk-fullwidth-false  attched-false     js-master-row  mk-grid">
+				
+<div class="vc_col-sm-12 wpb_column column_container   _ height-full">
+	
+<div id="padding-28" class="mk-padding-divider   clearfix"></div>
+
+
+<h2 id="fancy-title-29" class="mk-fancy-title  simple-style   color-single">
+	<span>
+				<p>Calendar of Events</p>
+			</span>
+</h2>
+<div class="clearboth"></div>
+
+
+
+
+<div class="mk-fancy-table table-style1  ">
+
+	
+	
+<table width="100%">
+<thead>
+<tr>
+<th>Monday, March 5</th>
+<th>Tuesday, March 6</th>
+<th>Wednesday, March 7</th>
+<th>Thursday, March 8</th>
+<th>Friday, March 9</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>11:30 &#8211; 1 PM: Company pitches and networking event</td>
+<td>Applications reviewed and interviews scheduled</td>
+<td>Interviews</td>
+<td>Interviews</td>
+<td> Decision Day</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+<div id="padding-30" class="mk-padding-divider   clearfix"></div>
+
+</div>
+	</div>
+
+<div class="mk-page-section-wrapper" data-mk-full-width="true" data-mk-full-width-init="true" data-mk-stretch-content="true">
+    <div id="sponsors"class="mk-page-section self-hosted   full_layout full-width-31 js-el js-master-row     center-y"    data-intro-effect="false">
+
+
+            <div class="mk-shape-divider mk-shape-divider--stick diagonal-top-style small-size mk-shape-divider--stick-top" id="mk-shape-divider-32">
+			<div class="shape__container">
+				<div class="shape">
+				
+		<svg width="100%" height="70px"><defs><pattern id="shapeDividerPattern-32" preserveaspectratio="none" style="background-repeat: none;" patternunits="userSpaceOnUse" x="0" y="0" width="100%" height="700px" viewbox="0 0 100 700"><polygon fill="#fff" points="0,0 0,70 100,0 "></polygon></pattern></defs><!-- Background --><rect x="0" y="0" width="100%" height="70px" fill="url(#shapeDividerPattern-32)"></rect></svg>
+</div>
+			</div>
+		</div>
+            <div class="mk-page-section-inner">
+                
+
+
+<div class="mk-video-color-mask"></div>
+
+                
+                            </div>
+
+            
+        <div class="page-section-content vc_row-fluid mk-grid " >
+            <div class="mk-padding-wrapper wpb_row">
+<div class="vc_col-sm-12 wpb_column column_container   _ height-full">
+	
+<div id="padding-34" class="mk-padding-divider   clearfix"></div>
+
+
+<h2 id="fancy-title-35" class="mk-fancy-title  simple-style   color-single">
+	<span>
+				<p>Our Sponsors</p>
+			</span>
+</h2>
+<div class="clearboth"></div>
+
+
+
+
+<span id="fancy-title-36" class="mk-fancy-title  simple-style   color-single">
+	<span>
+				<p>Cyber Jobs Week is sponsored by the Digital Forensics program at the University at Albany. This four-year undergraduate program in digital forensics has a forward-looking curriculum that helps students build the skills and experience to answer the who, what, where, when and why of cyber incidents including cyber attacks and cyber crimes.</p>
+<p>The event is also supported by School of Business organizations: <a href="http://twitter.com/ualbanycdo">Cyber Defense Organization</a>, <a href="https://twitter.com/DFA_UAlbany">Digital Forensics Association</a>, and <a href="https://twitter.com/UAlbanyISACA">ISACA</a>.</p>
+			</span>
+</span>
+<div class="clearboth"></div>
+
+
+
+
+<div id="padding-37" class="mk-padding-divider   clearfix"></div>
+
+</div>
+</div>
+            <div class="clearboth"></div>
+        </div>
+
+
+            
+            
+            
+
+        <div class="clearboth"></div>
+    </div>
+</div>
+<div class="vc_row-full-width vc_clearfix"></div>
+
+
+		<div class="clearboth"></div>
+									<div class="clearboth"></div>
+											</div>
+										<div class="clearboth"></div>
+				</div>
+			</div>
+					</div>
+
+
+<section id="mk-footer-unfold-spacer"></section>
+
+<section id="mk-footer" class=" mk-footer-disable" role="contentinfo" itemscope="itemscope" itemtype="https://schema.org/WPFooter" >
+		</section>
+</div>
+</div>
+
+<div class="bottom-corner-btns js-bottom-corner-btns">
+
+<a href="#top-of-page" class="mk-go-top  js-smooth-scroll js-bottom-corner-btn js-bottom-corner-btn--back">
+	<svg  class="mk-svg-icon" data-name="mk-icon-chevron-up" data-cacheid="icon-5a9c540232572" style=" height:16px; width: 16px; "  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1792 1792"><path d="M1683 1331l-166 165q-19 19-45 19t-45-19l-531-531-531 531q-19 19-45 19t-45-19l-166-165q-19-19-19-45.5t19-45.5l742-741q19-19 45-19t45 19l742 741q19 19 19 45.5t-19 45.5z"/></svg></a>
+</div>
+
+
+
+
+	<style type='text/css'></style><script type="text/javascript">
+    php = {
+        hasAdminbar: false,
+        json: (null != null) ? null : "",
+        jsPath: 'http://studentspl.us/wp-content/themes/jupiter/assets/js'
+      };
+    </script><script type='text/javascript'>
+/* <![CDATA[ */
+var wpcf7 = {"apiSettings":{"root":"https:\/\/studentspl.us\/index.php?rest_route=\/","namespace":"contact-form-7\/v1"},"recaptcha":{"messages":{"empty":"Please verify that you are not a robot."}}};
+/* ]]> */
+</script>
+<script type='text/javascript' src='http://studentspl.us/wp-content/plugins/contact-form-7/includes/js/scripts.js?ver=4.8'></script>
+<script type='text/javascript' src='http://studentspl.us/wp-content/themes/jupiter/assets/js/min/full-scripts.6.1.1.js?ver=1517307349'></script>
+<script type='text/javascript' src='http://studentspl.us/wp-content/themes/jupiter/header-builder/includes/assets/js/mkhb-render.js?ver=6.1.1'></script>
+<script type='text/javascript' src='http://studentspl.us/wp-content/themes/jupiter/header-builder/includes/assets/js/mkhb-column.js?ver=6.1.1'></script>
+<script type='text/javascript' src='http://studentspl.us/wp-content/plugins/google-calendar-events/assets/js/vendor/jquery.qtip.min.js?ver=3.1.9'></script>
+<script type='text/javascript' src='http://studentspl.us/wp-content/plugins/google-calendar-events/assets/js/vendor/moment.min.js?ver=3.1.9'></script>
+<script type='text/javascript' src='http://studentspl.us/wp-content/plugins/google-calendar-events/assets/js/vendor/moment-timezone-with-data.min.js?ver=3.1.9'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var simcal_default_calendar = {"ajax_url":"\/wp-admin\/admin-ajax.php","nonce":"a7ac559d76","locale":"en_US","text_dir":"ltr","months":{"full":["January","February","March","April","May","June","July","August","September","October","November","December"],"short":["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]},"days":{"full":["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"short":["Sun","Mon","Tue","Wed","Thu","Fri","Sat"]},"meridiem":{"AM":"AM","am":"am","PM":"PM","pm":"pm"}};
+var simcal_default_calendar = {"ajax_url":"\/wp-admin\/admin-ajax.php","nonce":"a7ac559d76","locale":"en_US","text_dir":"ltr","months":{"full":["January","February","March","April","May","June","July","August","September","October","November","December"],"short":["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]},"days":{"full":["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"short":["Sun","Mon","Tue","Wed","Thu","Fri","Sat"]},"meridiem":{"AM":"AM","am":"am","PM":"PM","pm":"pm"}};
+/* ]]> */
+</script>
+<script type='text/javascript' src='http://studentspl.us/wp-content/plugins/google-calendar-events/assets/js/default-calendar.min.js?ver=3.1.9'></script>
+<script type='text/javascript' src='http://studentspl.us/wp-content/plugins/google-calendar-events/assets/js/vendor/imagesloaded.pkgd.min.js?ver=3.1.9'></script>
+<script type='text/javascript' src='http://studentspl.us/wp-includes/js/wp-embed.min.js?ver=4.8.5'></script>
+<script type='text/javascript' src='http://studentspl.us/wp-content/plugins/js_composer_theme/assets/js/dist/js_composer_front.min.js?ver=5.0.1'></script>
+		<script type="text/javascript">
+		jQuery(’.header-logo a’).attr(‘href’, ‘http://your-new-link.com’);		</script>
+	<script type="text/javascript">	window.get = {};	window.get.captcha = function(enteredCaptcha) {
+                  return jQuery.get(ajaxurl, { action : "mk_validate_captcha_input", captcha: enteredCaptcha });
+              	};</script><style id="mk-shortcode-dynamic-styles" type="text/css"> #padding-4 { height:100px; } #padding-5 { height:40px; } #fancy-title-6{letter-spacing:0px;text-transform:capitalize;font-size:116px;color:#ffffff;text-align:center;font-style:inherit;font-weight:bold;padding-top:0px;padding-bottom:20px;}#fancy-title-6 span{}#fancy-title-6 span i{font-style:inherit;} @media handheld, only screen and (max-width:767px) { #fancy-title-6 { text-align:center !important; } } @media handheld, only screen and (min-width:768px) and (max-width:1024px) { #fancy-title-6 { font-size:70px; } } @media handheld, only screen and (max-width:767px) { #fancy-title-6 { font-size:36px; } } #fancy-title-7{letter-spacing:0px;text-transform:none;font-size:36px;color:#ffffff;text-align:center;font-style:inherit;font-weight:bold;padding-top:0px;padding-bottom:20px;}#fancy-title-7 span{}#fancy-title-7 span i{font-style:inherit;} @media handheld, only screen and (max-width:767px) { #fancy-title-7 { text-align:center !important; } } @media handheld, only screen and (max-width:767px) { #fancy-title-7 { font-size:20px; } } #fancy-title-8{letter-spacing:0px;text-transform:none;font-size:36px;color:#ffffff;text-align:center;font-style:inherit;font-weight:bold;padding-top:0px;padding-bottom:20px;}#fancy-title-8 span{}#fancy-title-8 span i{font-style:inherit;} @media handheld, only screen and (max-width:767px) { #fancy-title-8 { text-align:center !important; } } @media handheld, only screen and (max-width:767px) { #fancy-title-8 { font-size:20px; } } #mk-button-9 { margin-bottom:0px; margin-top:0px; margin-right:0px; } #mk-button-9 .mk-button { display:inline-block; max-width:100%; } #mk-shape-divider-10 .shape__container { background-color:; } #mk-shape-divider-10 .shape__container .shape { overflow:hidden; height:70; } #mk-shape-divider-10 .shape__container .shape svg { position:relative; top:0.6px; } .full-width-2 { min-height:579px; margin-bottom:0px; } .full-width-2 .page-section-content { padding:10px 0 110px; } #background-layer--2 { ; background-position:left top; background-repeat:no-repeat; ; } #background-layer--2 .mk-color-layer { ; width:100%; height:100%; position:absolute; top:0; left:0; } .full-width-2 .mk-skip-to-next { bottom:100px; }  #padding-12 { height:50px; } #padding-13 { height:10px; } #fancy-title-14{letter-spacing:0px;text-transform:capitalize;font-size:42px;color:#2a2d2e;text-align:left;font-style:inherit;font-weight:600;padding-top:0px;padding-bottom:10px;}#fancy-title-14 span{}#fancy-title-14 span i{font-style:inherit;} @media handheld, only screen and (max-width:767px) { #fancy-title-14 { text-align:center !important; } } @media handheld, only screen and (min-width:768px) and (max-width:1024px) { #fancy-title-14 { font-size:40px; } } @media handheld, only screen and (max-width:767px) { #fancy-title-14 { font-size:36px; } } #fancy-title-15{letter-spacing:0px;text-transform:none;font-size:16px;line-height:166%;color:#2a2d2e;text-align:left;font-style:inherit;font-weight:inherit;padding-top:0px;padding-bottom:20px;}#fancy-title-15 span{}#fancy-title-15 span i{font-style:inherit;} @media handheld, only screen and (max-width:767px) { #fancy-title-15 { text-align:center !important; } } #fancy-title-16{letter-spacing:0px;text-transform:capitalize;font-size:42px;color:#2a2d2e;text-align:left;font-style:inherit;font-weight:600;padding-top:0px;padding-bottom:10px;}#fancy-title-16 span{}#fancy-title-16 span i{font-style:inherit;} @media handheld, only screen and (max-width:767px) { #fancy-title-16 { text-align:center !important; } } @media handheld, only screen and (min-width:768px) and (max-width:1024px) { #fancy-title-16 { font-size:40px; } } @media handheld, only screen and (max-width:767px) { #fancy-title-16 { font-size:36px; } } #fancy-title-17{letter-spacing:0px;text-transform:none;font-size:16px;line-height:166%;color:#2a2d2e;text-align:left;font-style:inherit;font-weight:inherit;padding-top:0px;padding-bottom:0px;}#fancy-title-17 span{}#fancy-title-17 span i{font-style:inherit;} @media handheld, only screen and (max-width:767px) { #fancy-title-17 { text-align:center !important; } } #padding-18 { height:40px; } #mk-shape-divider-20 .shape__container { background-color:; } #mk-shape-divider-20 .shape__container .shape { overflow:hidden; height:70; } #mk-shape-divider-20 .shape__container .shape svg { position:relative; top:-0.6px; }  #padding-22 { height:40px; } #fancy-title-23{letter-spacing:0px;text-transform:capitalize;font-size:42px;color:#ffffff;text-align:left;font-style:inherit;font-weight:600;padding-top:0px;padding-bottom:10px;}#fancy-title-23 span{}#fancy-title-23 span i{font-style:inherit;} @media handheld, only screen and (max-width:767px) { #fancy-title-23 { text-align:center !important; } } @media handheld, only screen and (min-width:768px) and (max-width:1024px) { #fancy-title-23 { font-size:40px; } } @media handheld, only screen and (max-width:767px) { #fancy-title-23 { font-size:36px; } } #gallery-loop-24 { margin-bottom:20px; margin-top:8px; } #gallery-loop-24 .item-holder{ margin:0 4px 8px; } #gallery-loop-24 .image-hover-overlay { } #gallery-loop-24 .hover-grayscale .image-hover-overlay img { filter:url('http://studentspl.us/wp-content/themes/jupiter/assets/images/grayscale.svg#greyscale'); } #padding-25 { height:40px; } #mk-shape-divider-26 .shape__container { background-color:; } #mk-shape-divider-26 .shape__container .shape { overflow:hidden; height:70; } #mk-shape-divider-26 .shape__container .shape svg { position:relative; top:0.6px; } .full-width-19 { min-height:400px; margin-bottom:0px; background-color:#4f48c1; } .full-width-19 .page-section-content { padding:110px 0 110px; } #background-layer--19 { ; background-position:left top; background-repeat:repeat; ; } #background-layer--19 .mk-color-layer { ; width:100%; height:100%; position:absolute; top:0; left:0; } .full-width-19 .mk-skip-to-next { bottom:100px; } .full-width-19 .mk-fancy-title.pattern-style span, .full-width-19 .mk-blog-view-all { background-color:#4f48c1 !important; }  #padding-28 { height:40px; } #fancy-title-29{letter-spacing:0px;text-transform:capitalize;font-size:42px;color:#2a2d2e;text-align:left;font-style:inherit;font-weight:600;padding-top:0px;padding-bottom:10px;}#fancy-title-29 span{}#fancy-title-29 span i{font-style:inherit;} @media handheld, only screen and (max-width:767px) { #fancy-title-29 { text-align:center !important; } } @media handheld, only screen and (min-width:768px) and (max-width:1024px) { #fancy-title-29 { font-size:40px; } } @media handheld, only screen and (max-width:767px) { #fancy-title-29 { font-size:36px; } } #padding-30 { height:40px; } #mk-shape-divider-32 .shape__container { background-color:; } #mk-shape-divider-32 .shape__container .shape { overflow:hidden; height:70; } #mk-shape-divider-32 .shape__container .shape svg { position:relative; top:-0.6px; }  #padding-34 { height:40px; } #fancy-title-35{letter-spacing:0px;text-transform:capitalize;font-size:42px;color:#ffffff;text-align:left;font-style:inherit;font-weight:600;padding-top:0px;padding-bottom:10px;}#fancy-title-35 span{}#fancy-title-35 span i{font-style:inherit;} @media handheld, only screen and (max-width:767px) { #fancy-title-35 { text-align:center !important; } } @media handheld, only screen and (min-width:768px) and (max-width:1024px) { #fancy-title-35 { font-size:40px; } } @media handheld, only screen and (max-width:767px) { #fancy-title-35 { font-size:36px; } } #fancy-title-36{letter-spacing:0px;text-transform:none;font-size:16px;line-height:166%;color:#ffffff;text-align:left;font-style:inherit;font-weight:inherit;padding-top:0px;padding-bottom:20px;}#fancy-title-36 span{}#fancy-title-36 span i{font-style:inherit;} @media handheld, only screen and (max-width:767px) { #fancy-title-36 { text-align:center !important; } } #padding-37 { height:40px; } .full-width-31 { min-height:400px; margin-bottom:0px; background-color:#4f48c1; } .full-width-31 .page-section-content { padding:110px 0 10px; } #background-layer--31 { ; background-position:left top; background-repeat:repeat; ; } #background-layer--31 .mk-color-layer { ; width:100%; height:100%; position:absolute; top:0; left:0; } .full-width-31 .mk-fancy-title.pattern-style span, .full-width-31 .mk-blog-view-all { background-color:#4f48c1 !important; }</style>	
+</body>
+</html>
